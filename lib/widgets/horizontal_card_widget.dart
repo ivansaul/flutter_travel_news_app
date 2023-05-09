@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:flutter_travel_news_app/config/app_theme.dart';
 
 class HorizontalCardWidget extends StatelessWidget {
@@ -12,14 +13,25 @@ class HorizontalCardWidget extends StatelessWidget {
         width: 208,
         child: Row(
           children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(20),
-              child: Image.network(
-                'https://i.imgur.com/LjVaJRx.jpg',
-                height: 70,
-                width: 70,
-                fit: BoxFit.cover,
-              ),
+            Stack(
+              alignment: Alignment.center,
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Image.network(
+                    'https://i.imgur.com/LjVaJRx.jpg',
+                    height: 70,
+                    width: 70,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                IconButton(
+                  onPressed: () {},
+                  icon: SvgPicture.asset(
+                    'assets/icons/play_icon.svg',
+                  ),
+                ),
+              ],
             ),
             const SizedBox(width: 11),
             Expanded(
