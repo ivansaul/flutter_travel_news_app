@@ -1,9 +1,9 @@
-import 'package:device_preview/device_preview.dart';
+import 'dart:ui';
+
 import 'package:device_preview_screenshot/device_preview_screenshot.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
-import 'screens/home_screen.dart';
+import 'package:flutter_travel_news_app/config/app_router.dart';
 
 void main() => runApp(
       DevicePreview(
@@ -20,7 +20,7 @@ void main() => runApp(
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       useInheritedMediaQuery: true,
       locale: DevicePreview.locale(context),
       builder: DevicePreview.appBuilder,
@@ -28,7 +28,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
       ),
-      home: const HomePage(),
+      routerConfig: AppRouter.appRouter,
+      scrollBehavior: const MaterialScrollBehavior()
+          .copyWith(dragDevices: {PointerDeviceKind.mouse}),
     );
   }
 }

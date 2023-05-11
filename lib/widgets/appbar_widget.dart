@@ -26,7 +26,7 @@ class AppBarWidget extends StatelessWidget {
           children: [
             Text(
               'Welcome Back!',
-              style: MyTheme.titleMedium,
+              style: MyTheme.titleLarge,
             ),
             Text(
               'Monday, 3 October',

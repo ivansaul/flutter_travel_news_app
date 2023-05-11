@@ -4,3 +4,4 @@ export 'search_bar_widget.dart';
 export 'chip_container_widget.dart';
 export 'appbar_widget.dart';
 export 'bottom_navbar.dart';
+export 'horizontal_post_card_widget.dart';

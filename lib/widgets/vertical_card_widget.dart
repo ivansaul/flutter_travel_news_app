@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter_travel_news_app/screens/screens.dart';
+import 'package:go_router/go_router.dart';
 
 import '../config/app_theme.dart';
 
 class VerticalCardWidget extends StatelessWidget {
+  final String imageUrl;
   const VerticalCardWidget({
     super.key,
+    required this.imageUrl,
   });
 
   @override
@@ -25,18 +29,23 @@ class VerticalCardWidget extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(20),
               child: Image.network(
-                'https://i.imgur.com/Kv6W0PB.jpg',
+                imageUrl,
                 height: 164,
                 fit: BoxFit.cover,
               ),
             ),
             const SizedBox(height: 18),
-            Text(
-              'Fell the thrill on the only surf simulator in Maldives 2023',
-              style: MyTheme.titleMedium,
-              textAlign: TextAlign.start,
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
+            GestureDetector(
+              onTap: () {
+                context.pushNamed(DetailScreen.name);
+              },
+              child: Text(
+                'Fell the thrill on the only surf simulator in Maldives 2023',
+                style: MyTheme.titleMedium,
+                textAlign: TextAlign.start,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
             const SizedBox(height: 16),
             Row(
@@ -56,12 +65,17 @@ class VerticalCardWidget extends StatelessWidget {
                 const SizedBox(
                   width: 12,
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('Sang Dong-Min', style: MyTheme.titleSmall),
-                    Text('May 8, 2023', style: MyTheme.subtitleMedium),
-                  ],
+                GestureDetector(
+                  onTap: () {
+                    context.pushNamed(UserPostScreen.name);
+                  },
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Sang Dong-Min', style: MyTheme.titleSmall),
+                      Text('May 8, 2023', style: MyTheme.subtitleMedium),
+                    ],
+                  ),
                 ),
                 const Spacer(),
                 Container(

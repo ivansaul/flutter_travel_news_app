@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_travel_news_app/config/app_data.dart';
 import 'package:flutter_travel_news_app/config/app_theme.dart';
 
 import '../widgets/widgets.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+class HomeScreen extends StatelessWidget {
+  static const String name = 'home_screen';
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    const List<String> listImages = AppData.listNetworkImages;
+    const List<String> listChips = AppData.listChips;
     return Scaffold(
       backgroundColor: const Color(0xffFCFCFC),
       body: SafeArea(
@@ -27,9 +31,9 @@ class HomePage extends StatelessWidget {
                   shrinkWrap: true,
                   physics: const BouncingScrollPhysics(),
                   scrollDirection: Axis.horizontal,
-                  itemCount: 10,
+                  itemCount: listChips.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return const ChipContainer(content: '#Health');
+                    return ChipContainer(content: '#${listChips[index]}');
                   },
                 ),
               ),
@@ -40,11 +44,13 @@ class HomePage extends StatelessWidget {
                 height: 304,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: 5,
+                  itemCount: listImages.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return const Padding(
-                      padding: EdgeInsets.only(right: 10),
-                      child: VerticalCardWidget(),
+                    return Padding(
+                      padding: const EdgeInsets.only(right: 10),
+                      child: VerticalCardWidget(
+                        imageUrl: listImages[index],
+                      ),
                     );
                   },
                 ),
@@ -56,7 +62,8 @@ class HomePage extends StatelessWidget {
                   const Spacer(),
                   TextButton(
                     onPressed: () {},
-                    child: Text('View All', style: MyTheme.textButtonSmall),
+                    child:
+                        Text('View All', style: MyTheme.textButtonStyleSmall),
                   ),
                 ],
               ),
@@ -68,9 +75,11 @@ class HomePage extends StatelessWidget {
                 child: ListView.builder(
                   physics: const BouncingScrollPhysics(),
                   scrollDirection: Axis.horizontal,
-                  itemCount: 5,
+                  itemCount: listImages.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return const HorizontalCardWidget();
+                    return HorizontalCardWidget(
+                      imageUrl: listImages[index],
+                    );
                   },
                 ),
               ),
@@ -82,4 +91,3 @@ class HomePage extends StatelessWidget {
     );
   }
 }
-

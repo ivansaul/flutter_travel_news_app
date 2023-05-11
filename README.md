@@ -2,7 +2,7 @@
 
 A new Flutter news travel app.
 
-![](https://i.imgur.com/dOxfhkD.png)
+![](https://i.imgur.com/U6yc2q9.gif)
 
 **UI Credit**
 - Designed using Figma by [Rendy Vickriansyah](https://www.figma.com/community/file/1165219160023778067)
