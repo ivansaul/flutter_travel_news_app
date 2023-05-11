@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:ui';
 
 import 'package:device_preview_screenshot/device_preview_screenshot.dart';
@@ -8,11 +9,12 @@ import 'package:flutter_travel_news_app/config/app_router.dart';
 void main() => runApp(
       DevicePreview(
         enabled: !kReleaseMode,
-        tools: const [
+        tools: [
           ...DevicePreview.defaultTools,
-          DevicePreviewScreenshot(),
+          DevicePreviewScreenshot(
+            onScreenshot: screenshotAsFiles(Directory('/home/saul/Pictures/')),
+          ),
         ],
-
         builder: (context) => MyApp(), // Wrap your app
       ),
     );
